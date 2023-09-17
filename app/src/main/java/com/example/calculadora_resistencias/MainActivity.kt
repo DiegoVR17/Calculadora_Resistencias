@@ -3,18 +3,38 @@ package com.example.calculadora_resistencias
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Adapter
 import android.widget.ArrayAdapter
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.calculadora_resistencias.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
+    private lateinit var mainViewModel: MainViewModel
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = mainBinding.root
         setContentView(view)
+
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+        val resultObserver = Observer<String>{result ->
+            mainBinding.textViewResult.text = result
+        }
+
+        mainViewModel.result.observe(this,resultObserver)
+
+        val errorMsgObserver = Observer<String>{errorMsg ->
+            Snackbar.make(view,errorMsg, Snackbar.LENGTH_INDEFINITE)
+                .setAction("Continuar"){}
+                .show()
+        }
+        mainViewModel.errorMsg.observe(this,errorMsgObserver)
 
         val valoresR = resources.getStringArray(R.array.resistencia_valores)
         val valoresM = resources.getStringArray(R.array.multiplicador_valores)
@@ -47,41 +67,14 @@ class MainActivity : AppCompatActivity() {
         adapterT.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         mainBinding.spinnerBand4.adapter = adapterT
 
+
         mainBinding.buttonCalculate.setOnClickListener {
-            val band1Value = mainBinding.spinnerBand1.selectedItem.toString()
-            val band2Value = mainBinding.spinnerBand2.selectedItem.toString()
-            val band3Value = mainBinding.spinnerBand3.selectedItem.toString()
-            val band4Value = mainBinding.spinnerBand4.selectedItem.toString()
-
-            // Obtén los valores de resistencia de las bandas
-            val valorBanda1 = coloresResistencia[band1Value] ?: 0
-            val valorBanda2 = coloresResistencia[band2Value] ?: 0
-            val multiplicador = when (band3Value) {
-                "Negro" -> 1
-                "Marrón" -> 10
-                "Rojo" -> 100
-                "Naranja" -> 1000
-                "Amarillo" -> 10000
-                "Verde" -> 100000
-                "Azul" -> 1000000
-                "Violeta" -> 10000000
-                "Gris" -> 100000000
-                "Blanco" -> 1000000000
-                else -> 0
-            }
-
-            val tolerancia = when (band4Value) {
-                "Dorado" -> 5
-                "Plateado" -> 10
-                else -> 20
-            }
-
-            // Calcula el valor de la resistencia
-            val resistencia = (valorBanda1 * 10 + valorBanda2) * multiplicador
-
-            // Muestra el valor de la resistencia en el TextView
-            mainBinding.textViewResult.text = "Valor de resistencia calculado: $resistencia ohms, Tolerancia: ±$tolerancia%"
-
+            mainViewModel.getResis(mainBinding.spinnerBand1.selectedItem.toString(),
+                mainBinding.spinnerBand2.selectedItem.toString(),
+                mainBinding.spinnerBand3.selectedItem.toString(),
+                mainBinding.spinnerBand4.selectedItem.toString(),
+                coloresResistencia)
         }
+
     }
 }
