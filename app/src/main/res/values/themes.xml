@@ -8,7 +8,7 @@
     <style name="Theme.Calculadora_Resistencias" parent="Base.Theme.Calculadora_Resistencias" />
 
     <style name="Theme.APISplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/gold</item>
+        <item name="windowSplashScreenBackground">@color/seagreen</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/codigo_resistencias</item>
         <item name="windowSplashScreenAnimationDuration">2000</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.Calculadora_Resistencias</item>

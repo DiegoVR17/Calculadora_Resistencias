@@ -13,7 +13,9 @@
         android:text="@string/app_name"
         android:textSize="24sp"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/seagreen"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/logo_peli_imageView"
@@ -27,38 +29,106 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center"/>
 
-
-    <Spinner
-        android:id="@+id/spinner_band1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="#FFFFFF"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-    <Spinner
-        android:id="@+id/spinner_band2"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/banda1"
+            android:layout_weight="3"
+            android:textColor="@color/seagreen"
+            android:textStyle="bold"
+            android:textSize="14dp"/>
+        <Spinner
+            android:id="@+id/spinner_band1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="#FFFFFF"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-    <Spinner
-        android:id="@+id/spinner_band3"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/banda2"
+            android:layout_weight="2.5"
+            android:textColor="@color/seagreen"
+            android:textStyle="bold"
+            android:textSize="14dp"/>
+        <Spinner
+            android:id="@+id/spinner_band2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="#FFFFFF"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-    <Spinner
-        android:id="@+id/spinner_band4"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/banda3"
+            android:layout_weight="3"
+            android:textColor="@color/seagreen"
+            android:textStyle="bold"
+            android:textSize="14dp"/>
+        <Spinner
+            android:id="@+id/spinner_band3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="#FFFFFF"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/banda4"
+            android:layout_weight="3"
+            android:textColor="@color/seagreen"
+            android:textStyle="bold"
+            android:textSize="14dp"/>
+        <Spinner
+            android:id="@+id/spinner_band4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/button_calculate"
@@ -66,7 +136,8 @@
         android:layout_height="wrap_content"
         android:text="@string/calcular"
         android:layout_gravity="center"
-        android:textColor="@color/whitesmoke"/>
+        android:textColor="@color/whitesmoke"
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/text_view_result"
@@ -74,7 +145,9 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="18dp"
+        android:textColor="@color/seagreen"
+        android:textStyle="bold"
+        android:background="@color/burlywood"/>
 
 </LinearLayout>

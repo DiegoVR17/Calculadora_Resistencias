@@ -44,7 +44,7 @@ class MainViewModel: ViewModel() {
         val resistencia = (valorBanda1 * 10 + valorBanda2) * multiplicador
 
         // Muestra el valor de la resistencia en el TextView
-        result.value = "Valor de resistencia calculado: $resistencia ohms, Tolerancia: ±$tolerancia%"
+        result.value = "Resistencia = $resistencia Ohms, Tolerancia: ±$tolerancia%"
 
     }
 

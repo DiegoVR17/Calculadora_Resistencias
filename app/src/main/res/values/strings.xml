@@ -39,4 +39,9 @@
         <item>Dorado</item>
         <item>Plateado</item>
     </string-array>
+
+    <string name="banda1">Primer banda</string>
+    <string name="banda2">Segunda banda</string>
+    <string name="banda3">Tercer banda</string>
+    <string name="banda4">Cuarta banda</string>
 </resources>
